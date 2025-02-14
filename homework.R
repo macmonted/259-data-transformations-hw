@@ -30,8 +30,6 @@ typeof(ds$Year)  # Expected output: "double"
 
 ds <- ds %>% rename_with(tolower)
 
-#Mcomment: Should be rename_all()
-
 ### Question 3 ---------- 
 # Use mutate to create a new variable in ds that has the decade of the year as a number.
 # For example, 1971 becomes 1970, 2001 becomes 2000.
@@ -39,7 +37,7 @@ ds <- ds %>% rename_with(tolower)
 
 ds <- ds %>% mutate(decade = floor(Year / 10) * 10)
 
-#Mcomment: If all heads changed to lowercase, than year should be lowercase
+#Mcomment: If all heads changed to lowercase, than year should be lowercase (did Q2 work?)
 
 ### Question 4 ---------- 
 # Sort the dataset by rank so that 1 is at the top
@@ -85,7 +83,7 @@ ds_filtered <- ds %>%
 
  print(ds_filtered)
 
-#Mcomment: %in% works, you can also do an OR command
+#Mcomment: %in% works, you can also do an OR command (also Year should be lowercase)
 ds %>% filter(year == round(ds_sum$min_yr) | 
                 year == round(ds_sum$mean_yr) | 
                 year == round(ds_sum$max_yr) ) %>% arrange(year)
