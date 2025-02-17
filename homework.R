@@ -1,5 +1,5 @@
 #PSYC 259 Homework 2 - Data Transformation
-#For full credit, provide answers for at least 7/10
+#For full credit, provide answers for at least 7/10 (10/10)
 
 #List names of students collaborating with: 
 #DERRIAN TABILIN
@@ -87,6 +87,14 @@ artistsong <- ds %>%
                      ds_sum$average))
 arrange(artistsong, year)
 
+#Mcomment: Looks good! You can also do %in% dataframe or use an OR command
+
+artistsong <- ds %>%
+  filter(year %in% ds_sum)
+
+artistsong %>% filter(year == round(ds_sum$earliest) | 
+                year == round(ds_sum$average) | 
+                year == round(ds_sum$latest) ) %>% arrange(year)
 
 ### Question 8 ---------- 
 
@@ -111,6 +119,8 @@ artistsong <- ds %>%
                      ds_sum$average))
 arrange(artistsong, year)
 
+#Mcomment: Another option for the ifelse that is a little more specific 
+ds  <- ds %>% mutate(year = ifelse(song == "Brass in Pocket", 1979, year)
 
 ### Question 9 ---------
 
