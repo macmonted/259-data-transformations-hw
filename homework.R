@@ -1,5 +1,5 @@
 #PSYC 259 Homework 2 - Data Transformation
-#For full credit, provide answers for at least 7/10
+#For full credit, provide answers for at least 7/10 (10/10)
 
 #List names of students collaborating with: 
 
@@ -110,7 +110,13 @@ ds_filtered <- ds %>%
   arrange(year) %>%  
   select(year, artist, song)  #just relevant columns
 
+#Mcomment: Looks good! You can also just reference the ds_sum dataframe you made in Q6 (see 2 options below)
+ds_filtered <- ds %>%
+  filter(year %in% ds_sum)
 
+ds %>% filter(year == round(ds_sum$min_yr) | 
+                year == round(ds_sum$mean_yr) | 
+                year == round(ds_sum$max_yr) ) %>% arrange(year)
 
 ### Question 8 ---------- 
 
