@@ -1,5 +1,5 @@
 #PSYC 259 Homework 2 - Data Transformation
-#For full credit, provide answers for at least 7/10
+#For full credit, provide answers for at least 7/10 (10/10)
 
 #List names of students collaborating with: none
 
@@ -73,6 +73,13 @@ df2 <- df %>%
   select(year,artist,song) %>%
   arrange(year)
 
+#Mcomment: Looks good - you can also do %in% the dataframe or use an OR command
+df2 <- df %>%
+  filter(year %in% ds_sum)
+
+ds %>% filter(year == round(ds_sum$min_yr) | 
+                year == round(ds_sum$mean_yr) | 
+                year == round(ds_sum$max_yr) ) %>% arrange(year)
 
 ### Question 8 ---------- 
 # There's and error here. The oldest song "Brass in Pocket"
@@ -95,7 +102,9 @@ df_fixed2 <- df_fixed %>%
   filter(year %in% c(ds_sum_fixed$earliest,ds_sum_fixed$most_recent,ds_sum_fixed$average)) %>%
   select(year,artist,song) %>%
   arrange(year)
-  
+
+#Mcomment: For the ifelse, a more specific option is filtering by song (what if there was more than one 1879)
+ds  <- ds %>% mutate(year = ifelse(song == "Brass in Pocket", 1979, year)
 
 ### Question 9 ---------
 # Use group_by and summarize to find the average rank and 
